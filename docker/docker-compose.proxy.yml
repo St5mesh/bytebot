@@ -64,6 +64,7 @@ services:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - KOBOLDCPP_BASE_URL=${KOBOLDCPP_BASE_URL:-http://192.168.1.100:5001}
     networks:
       - bytebot-network
 
