@@ -48,12 +48,26 @@ services:
     environment:
       - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/bytebotdb}
       - BYTEBOT_DESKTOP_BASE_URL=${BYTEBOT_DESKTOP_BASE_URL:-http://bytebot-desktop:9990}
+      - BYTEBOT_LLM_PROXY_URL=${BYTEBOT_LLM_PROXY_URL:-http://bytebot-llm-proxy:4000}
+    depends_on:
+      - postgres
+      - bytebot-llm-proxy
+    networks:
+      - bytebot-network
+
+  bytebot-llm-proxy:
+    build:
+      context: ../packages/
+      dockerfile: bytebot-llm-proxy/Dockerfile
+    container_name: bytebot-llm-proxy
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - KOBOLDCPP_BASE_URL=${KOBOLDCPP_BASE_URL:-http://192.168.1.100:5001}
-    depends_on:
-      - postgres
     networks:
       - bytebot-network
 

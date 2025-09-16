@@ -253,6 +253,7 @@ Use any AI provider through our [LiteLLM integration](https://docs.bytebot.ai/de
 - Azure OpenAI
 - AWS Bedrock
 - Local models via Ollama
+- **KoboldCpp for local home network deployment** ([Setup Guide](docs/KOBOLDCPP_SETUP.md))
 - 100+ other providers
 
 ### Enterprise Deployment

@@ -28,3 +28,11 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
+
+  # KoboldCpp Local Model
+  - model_name: koboldcpp-local
+    litellm_params:
+      model: openai/gpt-3.5-turbo  # Use gpt-3.5-turbo as a placeholder for OpenAI-compatible API
+      api_base: "${KOBOLDCPP_BASE_URL:-http://192.168.1.100:5001}/v1"  # Default to common home network IP
+      api_key: "dummy"  # KoboldCpp doesn't require a real API key
+      custom_llm_provider: openai
